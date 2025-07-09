@@ -1,6 +1,20 @@
-# 📊 LLM-Optimized Excel Document Extractor
+# 📊 Document Extractor: Docling + Enhanced Excel Implementation
 
-Converts Excel files to LLM-friendly markdown format with maximum clarity and minimal noise.
+**Implementation of Docling for PDF/Word processing and Enhanced Excel extraction for complex spreadsheets**
+
+## 🎯 What This Repo Does
+
+This repository implements **two specialized document processing approaches**:
+
+### 🐍 **1. Docling Integration**
+- **Purpose**: Process PDF and Word documents  
+- **Technology**: IBM's Docling library
+- **Output**: Standard markdown extraction
+
+### 📊 **2. Enhanced Excel Processing** 
+- **Purpose**: Handle complex Excel files with merged cells
+- **Technology**: Custom openpyxl-based solution
+- **Output**: LLM-optimized markdown with clean table structure
 
 ## 🚀 Quick Start
 
@@ -11,54 +25,79 @@ pip install -r requirements.txt
 
 ### 2. Run Extractor
 ```bash
-# Extract single file
+# Excel files -> Enhanced processing
 python main.py your_file.xlsx
 
-# Extract with custom output name
-python main.py your_file.xlsx output.md
+# PDF/Word files -> Docling processing  
+python main.py your_file.pdf
+python main.py your_file.docx
 
-# Demo mode (process all sample files)
+# Demo mode (test both implementations)
 python main.py --demo
 ```
 
-## 📁 What it does
+## 🔧 Implementation Details
 
-✅ **Perfect for LLM processing**:
-- Clean markdown tables (no empty columns)
-- Preserves merged cell structure  
-- Handles complex Excel layouts
-- Maintains business logic & formulas
-- Optimized token count
+### 📊 Enhanced Excel Processor (`enhanced_excel_extractor.py`)
+- **Problem Solved**: Standard Excel extractors create messy output with duplicate columns from merged cells
+- **Solution**: Custom logic to handle merged cells properly and create clean tables
+- **Key Features**:
+  - ✅ Preserves merged cell structure
+  - ✅ Eliminates duplicate columns  
+  - ✅ Maintains business logic & formulas
+  - ✅ LLM-optimized token count
 
-✅ **Supported formats**:
-- `.xlsx`, `.xls` (Excel) - **LLM-optimized processing**
-- `.pdf`, `.docx` - Standard extraction
+### 🐍 Docling Integration (`docling_extractor.py`)  
+- **Purpose**: Leverage IBM's Docling for PDF/Word processing
+- **Implementation**: Wrapper around Docling with consistent output format
+- **Supported**: PDF, DOCX files
 
-## 🎯 Example Output
+## 📁 Processing Logic
 
-**Input**: Complex Excel with merged cells, business rules
-**Output**: Clean markdown with:
+The main script (`main.py`) routes files based on extension:
+
+```python
+if file_ext in ['.xlsx', '.xls']:
+    # Use Enhanced Excel Processor
+    process_excel_for_llm(input_file, output_file)
+else:
+    # Use Docling Integration  
+    process_non_excel_file(input_file, output_file)
+```
+
+## 🎯 Example: Enhanced Excel Output
+
+**Input**: Complex banking Excel with merged headers
+**Output**: Clean LLM-ready markdown:
 ```markdown
 Ngân Hàng TMCP Ngoại Thương Việt Nam
 Chi nhánh: XXXXX (mã và tên)
 
-| Date | Branch | CIF | Customer | Amount |
-|------|--------|-----|----------|--------|
-| 2024 | HN001  | C01 | Company A| 1000   |
+| Ngày giao dịch | Ngày hiệu lực | Mã chi nhánh | CIF | Tên khách hàng |
+|----------------|---------------|--------------|-----|----------------|
+| 01/01/2024     | 01/01/2024    | HN001        | C01 | Company A      |
+
+**Phạm vi báo cáo:**
+Bản ghi lịch sử TKV (KEY: LHNOTE, LHRECN)...
 ```
 
-## 💡 Features
+## 🛠 Technical Stack
 
-- 🧹 **No duplicate columns**
-- 📋 **Structured content sections** 
-- 🤖 **LLM token optimized**
-- 🔄 **Preserves business rules**
-- 📊 **Handles merged cells correctly**
+- **Core**: Python 3.8+
+- **Excel Processing**: `openpyxl` with custom merged cell handling
+- **PDF/Word Processing**: `docling` library  
+- **Output**: Markdown format optimized for LLM consumption
 
-## 🛠 Requirements
+## 📦 File Structure
 
-- Python 3.8+
-- See `requirements.txt` for packages
+```
+document_extractor/
+├── main.py                     # Main router
+├── enhanced_excel_extractor.py # Custom Excel processor  
+├── docling_extractor.py        # Docling wrapper
+├── requirements.txt            # Dependencies
+└── sample files               # Test documents
+```
 
 ---
-Ready to extract! 🎉 
+**Two specialized implementations, one unified interface** 🎉 
