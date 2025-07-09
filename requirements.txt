@@ -1,0 +1,15 @@
+# Unified document processing with Docling
+docling>=2.40.0
+
+# Enhanced Excel processing
+openpyxl>=3.1.0
+pandas>=2.0.0
+xlrd>=2.0.0
+
+# Docling supports all these formats out of the box:
+# - PDF (with advanced table extraction)
+# - DOCX, PPTX (Office documents)  
+# - XLSX (Excel spreadsheets)
+# - HTML (web pages)
+# - Images (PNG, JPG, TIFF)
+# - Audio (WAV, MP3) 
