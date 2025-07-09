@@ -1,0 +1,37 @@
+🚀 DOCUMENT EXTRACTOR - QUICK START
+==================================
+
+📦 You have: document_extractor_v1.0.zip (86KB)
+
+🎯 SUPER SIMPLE SETUP:
+
+1. Unzip package anywhere:
+   unzip document_extractor_v1.0.zip
+
+2. Install dependencies:
+   pip install -r requirements.txt
+
+3. Run immediately:
+   python main.py --demo
+
+4. Extract your Excel:
+   python main.py your_file.xlsx
+
+✅ DONE! Your file will be converted to LLM-friendly markdown.
+
+🔧 WHAT'S INCLUDED:
+- main.py (main extractor)
+- enhanced_excel_extractor.py (Excel processor)  
+- docling_extractor.py (PDF/Word processor)
+- requirements.txt (dependencies)
+- sample files for testing
+- README.md (full documentation)
+
+💡 FEATURES:
+✅ Clean Excel extraction (no duplicate columns)
+✅ LLM-optimized output format
+✅ Handles merged cells perfectly
+✅ Preserves business rules & formulas
+✅ Works with .xlsx, .xls, .pdf, .docx
+
+🎉 Ready to extract documents for AI processing! 

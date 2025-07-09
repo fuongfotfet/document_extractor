@@ -1,115 +1,64 @@
-# Document Processor - Universal File Extractor
+# 📊 LLM-Optimized Excel Document Extractor
 
-A modular system to extract text and tables from various file formats and convert them to Markdown.
+Converts Excel files to LLM-friendly markdown format with maximum clarity and minimal noise.
 
-## Project Structure
+## 🚀 Quick Start
 
-```
-├── main.py                     # Main file - auto file type detection
-├── requirements.txt            # Dependencies
-├── extractors/                 # Package containing extractor modules
-│   ├── __init__.py
-│   ├── base_extractor.py       # Common base class
-│   ├── excel_extractor.py      # Excel processing (.xlsx, .xls)
-│   ├── docx_extractor.py       # Word document processing (.docx) 
-│   └── pdf_extractor.py        # PDF processing (.pdf)
-└── sample files/               # Sample files for testing
-    ├── test.xlsx
-    ├── sample.docx
-    └── sample_with_table.pdf
-```
-
-## Usage
-
-### 1. Command Line Mode
-
-```bash
-# Process file with auto-generated output name
-python main.py input_file.xlsx
-
-# Process file with custom output name  
-python main.py input_file.docx output_file.md
-
-# Show help
-python main.py
-```
-
-### 2. Demo Mode
-
-```bash
-# Test with all sample files
-python main.py --demo
-```
-
-## Supported Formats
-
-| Format | Extensions | Features |
-|--------|------------|----------|
-| **Excel** | .xlsx, .xls | Multi-sheets, Tables, Headers |
-| **Word** | .docx | Text + Tables extraction |
-| **PDF** | .pdf | Text + GMFT table extraction + OCR fallback |
-
-## Installation
-
-1. **Install Python dependencies:**
+### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-> **Note**: This will automatically install GMFT for advanced table extraction using Microsoft's Table Transformers.
-
-2. **OCR Support (for scanned PDFs - fallback only):**
-
-**macOS:**
+### 2. Run Extractor
 ```bash
-brew install tesseract tesseract-lang
-```
+# Extract single file
+python main.py your_file.xlsx
 
-**Ubuntu/Debian:**
-```bash
-sudo apt-get install tesseract-ocr tesseract-ocr-vie
-```
+# Extract with custom output name
+python main.py your_file.xlsx output.md
 
-**Windows:**
-- Download Tesseract from: https://github.com/UB-Mannheim/tesseract/wiki
-- Add Tesseract to system PATH
-
-> **Note**: The system prioritizes GMFT for table extraction (faster, more accurate). OCR is used as fallback for scanned PDFs only.
-
-## Examples
-
-```bash
-# Excel file
-python main.py test.xlsx
-
-# Word document  
-python main.py sample.docx
-
-# PDF file
-python main.py sample_with_table.pdf
-
-# Test all formats
+# Demo mode (process all sample files)
 python main.py --demo
 ```
 
-## Features
+## 📁 What it does
 
-- **Auto file type detection**
-- **Modular architecture** - Easy to extend
-- **GMFT table extraction** - Advanced ML-based table detection using Microsoft's Table Transformers
-- **Header recognition** - Intelligent header detection  
-- **Markdown output** - Clean, formatted output
-- **Error handling** - Robust exception handling
-- **Command line interface** - Easy to use
-- **OCR fallback** - Support for scanned PDFs when GMFT cannot extract tables
+✅ **Perfect for LLM processing**:
+- Clean markdown tables (no empty columns)
+- Preserves merged cell structure  
+- Handles complex Excel layouts
+- Maintains business logic & formulas
+- Optimized token count
 
-## Quick Test
+✅ **Supported formats**:
+- `.xlsx`, `.xls` (Excel) - **LLM-optimized processing**
+- `.pdf`, `.docx` - Standard extraction
 
-```bash
-# Test immediately with available sample files
-python main.py --demo
+## 🎯 Example Output
+
+**Input**: Complex Excel with merged cells, business rules
+**Output**: Clean markdown with:
+```markdown
+Ngân Hàng TMCP Ngoại Thương Việt Nam
+Chi nhánh: XXXXX (mã và tên)
+
+| Date | Branch | CIF | Customer | Amount |
+|------|--------|-----|----------|--------|
+| 2024 | HN001  | C01 | Company A| 1000   |
 ```
+
+## 💡 Features
+
+- 🧹 **No duplicate columns**
+- 📋 **Structured content sections** 
+- 🤖 **LLM token optimized**
+- 🔄 **Preserves business rules**
+- 📊 **Handles merged cells correctly**
+
+## 🛠 Requirements
+
+- Python 3.8+
+- See `requirements.txt` for packages
 
 ---
-
-**Ready to extract!** 
+Ready to extract! 🎉 
